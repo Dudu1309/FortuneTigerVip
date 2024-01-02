@@ -1,0 +1,209 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #4a4a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('https://img.zcool.cn/community/01763f5b4efd58a80121ade07a91f0.jpg@2o.jpg'); /* Nova imagem de fundo */
+            background-size: cover;
+            position: relative; /* Adiciona posição relativa ao corpo para posicionar a marca d'água */
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            z-index: 2; /* Ajuste para sobrepor o vídeo */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centralizar na horizontal */
+            width: 60%;
+            margin-top: 330px; /* Ajuste a margem superior conforme necessário */
+            margin-left: -20px; /* Ajuste a margem esquerda conforme necessário */
+            z-index: 1; /* Ajuste para ficar abaixo do cabeçalho */
+            position: relative; /* Adiciona posição relativa ao contêiner para posicionar a marca d'água */
+        }
+
+        .rotating-image {
+            animation: rotation 2s infinite linear;
+            width: 50px;  /* Ajuste para definir a largura da imagem */
+            height: 50px;  /* Ajuste para definir a altura da imagem */
+            margin-right: 10px;  /* Espaçamento à direita para separar da palavra */
+        }
+
+        .text-container {
+            display: flex;
+            align-items: center;
+            padding: 15px; /* Ajuste o preenchimento conforme necessário */
+            border-radius: 8px; /* Adicione bordas arredondadas conforme desejado */
+            background-color: #ffe0b2; /* Cor de pele */
+            border: 2px solid black; /* Borda preta */
+        }
+
+        .normal-container,
+        .turbo-container,
+        .validade-container {
+            width: 350px; /* Largura do quadrado normal */
+            height: 50px; /* Altura do quadrado normal */
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 25px;
+            margin: 5px;
+            font-weight: bold; /* Texto em negrito */
+            color: rgb(0, 0, 0); /* Cor vermelha */
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #545de2; /* Cor verde brilhante */
+            border: 2px solid white; /* Borda branca */
+            border-radius: 25px; /* Bordas extremamente redondas */
+            padding: 15px 125px;  /* Ajuste para o tamanho do botão */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 35px 0;  /* Ajuste para aumentar o espaçamento entre os botões */
+            transition-duration: 0.4s;
+            overflow: hidden;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: white;
+            color: #545de2;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Estilo do vídeo */
+        video {
+            width: 100%; /* Ajuste o tamanho do vídeo */
+            max-width: 500px; /* Largura máxima do vídeo */
+            margin-top: 30px; /* Espaçamento superior */
+            position: fixed;
+            z-index: 0; /* Coloca o vídeo atrás dos elementos */
+            /* Ajustes para posição do vídeo */
+            margin-left: -20px; /* Ajuste para a esquerda */
+            margin-right: 0px;
+            margin-bottom: -15px; /* Ajuste para baixo */
+            margin-top: -80px; /* Ajuste para cima */
+            border-radius: 15px; /* Borda arredondada */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Adicione o vídeo abaixo do cabeçalho -->
+    <video autoplay loop muted controlsList="nodownload">
+        <source src="OS CRIA ‐ Feito com o Clipchamp (1).mp4" type="video/webm">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <div class="container">
+        <div class="text-container normal-container" style="margin-left: 0px;">
+            <img src="png-transparent-rotating-arrow-arrows-icon-removebg-preview.png" alt="Imagem N" class="rotating-image">
+            <p style="margin-left: 0px;">Normal: <span id="numero_normal"></span></p>
+        </div>
+
+        <div class="text-container turbo-container" style="margin-left: 0px;">
+            <img src="png-transparent-rotating-arrow-arrows-icon-removebg-preview.png" alt="Imagem T" class="rotating-image">
+            <p style="margin-left: 0px;">Turbo: <span id="numero_turbo"></span></p>
+        </div>
+
+        <div class="text-container validade-container" style="margin-left: 0px;">
+            <img src="png-transparent-rotating-arrow-arrows-icon-removebg-preview.png" alt="Imagem V" class="rotating-image">
+            <p style="margin-left: 0px;">Validade: <span id="numero_validade"></span></p>
+        </div>
+
+        <!-- Botões -->
+        <div class="buttons-container">
+            <!-- Botão "Gerar Sinais" -->
+            <button id="gerarSinaisBtn" onclick="gerarSinais()">Gerar Sinais</button>
+            
+            <!-- Botão "Jogue agora!" com link de afiliado -->
+            <a href="https://slotwin.me/index.html#/home?a=c9p3nmpe" target="_blank">
+                <button>Jogue agora!</button>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function gerarSinais() {
+            var botao = document.getElementById('gerarSinaisBtn');
+            botao.disabled = true;
+
+            var numero_normal = Math.floor(Math.random() * 30) + 1;
+            var numero_turbo = Math.floor(Math.random() * 30) + 1;
+            
+            var agora = new Date();
+            agora.setMinutes(agora.getMinutes() + 3); // Adiciona 3 minutos ao horário atual
+
+            var numero_normal_span = document.getElementById('numero_normal');
+            numero_normal_span.innerHTML = "<span style='color:red;'>" + numero_normal + "X</span>";
+
+            var numero_turbo_span = document.getElementById('numero_turbo');
+            numero_turbo_span.innerHTML = "<span style='color:red;'>" + numero_turbo + "X</span>";
+
+            var numero_validade_span = document.getElementById('numero_validade');
+            var horas = agora.getHours().toString().padStart(2, '0');
+            var minutos = agora.getMinutes().toString().padStart(2, '0');
+            var segundos = agora.getSeconds().toString().padStart(2, '0');
+            numero_validade_span.innerHTML = "<span style='color:red;'>" + horas + ":" + minutos + ":" + segundos + "</span>";
+
+            var tempoRestante = 60;
+
+            var cronometro = setInterval(function() {
+                tempoRestante -= 1;
+                botao.innerText = "Aguarde (" + tempoRestante + "s)";
+
+                if (tempoRestante <= 0) {
+                    botao.disabled = false;
+                    botao.innerText = "Gerar Sinais";
+                    clearInterval(cronometro);
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
+
